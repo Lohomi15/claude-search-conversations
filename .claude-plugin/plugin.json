@@ -1,0 +1,19 @@
+{
+  "name": "search-conversations",
+  "description": "Search your past Claude Code conversations by keyword and jump back into any matched session with /resume.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Parth Lohomi"
+  },
+  "homepage": "https://github.com/Lohomi15/claude-search-conversations",
+  "repository": "https://github.com/Lohomi15/claude-search-conversations",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skill",
+    "search",
+    "conversations",
+    "history",
+    "resume"
+  ]
+}
