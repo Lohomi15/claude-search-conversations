@@ -1,5 +1,10 @@
 # search-conversations
 
+![License](https://img.shields.io/github/license/Lohomi15/claude-search-conversations)
+![Stars](https://img.shields.io/github/stars/Lohomi15/claude-search-conversations?style=social)
+![Python](https://img.shields.io/badge/python-3.8+-blue)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)
+
 A Claude Code skill that searches your past conversations by keyword and helps you jump back into any matched session.
 
 Every Claude Code chat is stored locally as JSONL in `~/.claude/projects/`. This skill searches across all of them, shows you matching snippets with context, and tells you exactly which session to `/resume`.
@@ -37,6 +42,7 @@ You can also run the search script directly:
 ```bash
 python3 ~/.claude/skills/search-conversations/search.py "postgres migration"
 python3 ~/.claude/skills/search-conversations/search.py "auth flow" -c 2 -n 10
+python3 ~/.claude/skills/search-conversations/search.py "deploy" --since 2026-04-01
 ```
 
 Flags:
@@ -44,6 +50,8 @@ Flags:
 - `-c N` — include N turns of context before/after each hit (default: 1)
 - `-n N` — cap number of hits (default: 20)
 - `--chars N` — truncate each snippet line to N chars (default: 400)
+- `--since YYYY-MM-DD` — only include matches on or after this date
+- `--until YYYY-MM-DD` — only include matches on or before this date
 
 ## Sample output
 
@@ -74,14 +82,11 @@ To jump back into a matched session, copy its full UUID and run:
 Inside Claude Code:
 
 ```
-/plugin update search-conversations
+/plugin marketplace update Lohomi15/claude-search-conversations
+/reload-plugins
 ```
 
-Or update all plugins at once:
-
-```
-/plugin update
-```
+The first command fetches the latest version from GitHub; the second reloads it into your current session.
 
 ### If you installed manually (git clone)
 

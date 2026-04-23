@@ -57,7 +57,29 @@ def load_session(path):
     return entries
 
 
-def search(query, context=1, max_hits=None, snippet_chars=400):
+def parse_date(s):
+    """Parse YYYY-MM-DD or ISO 8601; return datetime (UTC-naive) or None."""
+    if not s:
+        return None
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00")).replace(tzinfo=None)
+    except ValueError:
+        try:
+            return datetime.strptime(s, "%Y-%m-%d")
+        except ValueError:
+            return None
+
+
+def entry_timestamp(entry):
+    ts = entry.get("timestamp", "")
+    try:
+        return datetime.fromisoformat(ts.replace("Z", "+00:00")).replace(tzinfo=None)
+    except ValueError:
+        return None
+
+
+def search(query, context=1, max_hits=None, snippet_chars=400,
+           since=None, until=None):
     q = query.lower()
     files = sorted(glob.glob(os.path.join(PROJECTS_DIR, "*/*.jsonl")))
     results = []
@@ -72,6 +94,15 @@ def search(query, context=1, max_hits=None, snippet_chars=400):
             text = extract_text(entry)
             if not text or q not in text.lower():
                 continue
+
+            if since or until:
+                et = entry_timestamp(entry)
+                if et is None:
+                    continue
+                if since and et < since:
+                    continue
+                if until and et > until:
+                    continue
 
             # grab surrounding turns for context
             start = max(0, idx - context)
@@ -113,10 +144,23 @@ def main():
                    help="Max hits to return (default: 20).")
     p.add_argument("--chars", type=int, default=400,
                    help="Max chars per snippet line (default: 400).")
+    p.add_argument("--since", type=str, default=None,
+                   help="Only include matches on or after this date (YYYY-MM-DD).")
+    p.add_argument("--until", type=str, default=None,
+                   help="Only include matches on or before this date (YYYY-MM-DD).")
     args = p.parse_args()
 
+    since = parse_date(args.since) if args.since else None
+    until = parse_date(args.until) if args.until else None
+    if args.since and since is None:
+        print(f"Invalid --since value: {args.since!r} (expected YYYY-MM-DD)", file=sys.stderr)
+        sys.exit(2)
+    if args.until and until is None:
+        print(f"Invalid --until value: {args.until!r} (expected YYYY-MM-DD)", file=sys.stderr)
+        sys.exit(2)
+
     hits = search(args.query, context=args.context, max_hits=args.max,
-                  snippet_chars=args.chars)
+                  snippet_chars=args.chars, since=since, until=until)
 
     if not hits:
         print(f"No matches for '{args.query}'.")

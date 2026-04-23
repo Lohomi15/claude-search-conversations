@@ -29,6 +29,10 @@ Flags:
 - `-c N` — include N turns of context before/after each hit (default 1).
 - `-n N` — cap number of hits (default 20).
 - `--chars N` — truncate each snippet line to N chars (default 400).
+- `--since YYYY-MM-DD` — only include matches on or after this date.
+- `--until YYYY-MM-DD` — only include matches on or before this date.
+
+Use date flags when the user references timing ("last week", "yesterday", "in April"). Resolve the relative date to YYYY-MM-DD before passing it in.
 
 Output is grouped per hit: timestamp, session id (first 8 chars), project dir, a context window of `[user]`/`[assistant]` turns, and the full jsonl path.
 
