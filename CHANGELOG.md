@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **Codex session support** — extend the glob to include `~/.codex/sessions/**/*.jsonl` for users on both agents.
 - **Incremental indexing** — mtime-based so re-queries don't re-scan unchanged sessions.
 - **Regex mode** — optional `--regex` flag for power users.
+- **Semantic search (`--semantic` flag)** — embed the query with a small local model (e.g., `sentence-transformers`) and rank by cosine similarity to find conceptually related turns, not just literal keyword matches. Adds a real dependency, so would stay opt-in. See [searchat](https://github.com/Process-Point-Technologies-Corporation/searchat) for a full semantic-search implementation (different product shape — runs as a local web server with live indexing across Claude Code, Codex, and Mistral Vibe).
+
+### Related projects
+If this skill doesn't fit your use case, these solve the same problem in different ways:
+- [arjunkmrm/recall](https://github.com/arjunkmrm/recall) — SQLite FTS5 index with BM25 ranking and stemming. Closer to a proper keyword search engine. Supports Claude Code + Codex.
+- [Process-Point-Technologies-Corporation/searchat](https://github.com/Process-Point-Technologies-Corporation/searchat) — Semantic (embedding-based) search over Claude Code, Codex, and Mistral Vibe sessions. Runs as a local web server with live indexing.
 
 ## [1.0.0] - 2026-04-23
 
