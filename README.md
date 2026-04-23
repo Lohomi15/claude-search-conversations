@@ -67,6 +67,45 @@ To jump back into a matched session, copy its full UUID and run:
 /resume 7a3f19cc-....
 ```
 
+## Updating
+
+### If you installed via `/plugin install`
+
+Inside Claude Code:
+
+```
+/plugin update search-conversations
+```
+
+Or update all plugins at once:
+
+```
+/plugin update
+```
+
+### If you installed manually (git clone)
+
+From wherever you cloned the repo:
+
+```bash
+cd <path-to-cloned-repo>
+git pull
+```
+
+If you symlinked the skill into `~/.claude/skills/search-conversations` (recommended for contributors), `git pull` is all you need — the symlink will pick up the new files automatically.
+
+If you copied the files in, re-copy them:
+
+```bash
+cp -r skills/search-conversations ~/.claude/skills/
+```
+
+Or just run the helper:
+
+```bash
+./update.sh
+```
+
 ## How it works
 
 1. Globs `~/.claude/projects/*/*.jsonl` — every Claude Code session you've ever had.
