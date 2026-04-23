@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Candidate improvements (not yet implemented)
+- **SQLite FTS5 index** — replace the full-scan substring search with an indexed store for faster queries on large archives. Would use Python stdlib `sqlite3`, no new deps.
+- **BM25 ranking + recency boost** — rank results by relevance and decay older matches so "the recent chat where X was mentioned once" surfaces correctly.
+- **Stemming** — "running" should match "run", "deploys" should match "deploy".
+- **Codex session support** — extend the glob to include `~/.codex/sessions/**/*.jsonl` for users on both agents.
+- **Incremental indexing** — mtime-based so re-queries don't re-scan unchanged sessions.
+- **Regex mode** — optional `--regex` flag for power users.
+
 ## [1.0.0] - 2026-04-23
 
 ### Added

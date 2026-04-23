@@ -126,6 +126,16 @@ It's all local. No network calls, no external dependencies.
 - Python 3.8+
 - macOS or Linux
 
+## Issues & suggestions
+
+Found a bug, have a feature idea, or want to suggest an improvement? Open an issue:
+
+👉 **[github.com/Lohomi15/claude-search-conversations/issues](https://github.com/Lohomi15/claude-search-conversations/issues)**
+
+There are templates for bug reports and feature requests to make it quick. Pull requests are also welcome — fork the repo, make your change, and open a PR.
+
+Planned improvements and known candidates are tracked in [CHANGELOG.md](./CHANGELOG.md) under `[Unreleased]`.
+
 ## License
 
 MIT — see [LICENSE](./LICENSE).
