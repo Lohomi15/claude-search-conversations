@@ -1,4 +1,5 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claude-search-conversations",
   "description": "Marketplace for the search-conversations Claude Code skill",
   "owner": {
@@ -9,12 +10,12 @@
     {
       "name": "search-conversations",
       "description": "Search your past Claude Code conversations by keyword and jump back into any matched session with /resume.",
-      "version": "1.0.0",
-      "source": "./",
-      "author": {
-        "name": "Parth Lohomi",
-        "email": "lohomi.parth.iitkgp@gmail.com"
-      }
+      "category": "productivity",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Lohomi15/claude-search-conversations.git"
+      },
+      "homepage": "https://github.com/Lohomi15/claude-search-conversations"
     }
   ]
 }
