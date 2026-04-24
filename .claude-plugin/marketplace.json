@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    {
+      "name": "search-conversations",
+      "description": "Search your past Claude Code conversations by keyword and jump back into any matched session with /resume.",
+      "source": {
+        "type": "git",
+        "url": "."
+      }
+    }
+  ]
+}

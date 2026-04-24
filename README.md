@@ -13,11 +13,14 @@ Every Claude Code chat is stored locally as JSONL in `~/.claude/projects/`. This
 
 ### As a Claude plugin (recommended)
 
-Inside Claude Code:
+Inside Claude Code, run these two commands in order:
 
 ```
-/plugin install Lohomi15/claude-search-conversations
+/plugin marketplace add Lohomi15/claude-search-conversations
+/plugin install search-conversations
 ```
+
+The first command registers this repo as a plugin source; the second installs the skill.
 
 ### Manual install
 
@@ -77,7 +80,7 @@ To jump back into a matched session, copy its full UUID and run:
 
 ## Updating
 
-### If you installed via `/plugin install`
+### If you installed via the plugin commands
 
 Inside Claude Code:
 
