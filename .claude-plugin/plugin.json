@@ -15,5 +15,11 @@
     "conversations",
     "history",
     "resume"
+  ],
+  "skills": [
+    {
+      "name": "search-conversations",
+      "path": "skills/search-conversations"
+    }
   ]
 }
