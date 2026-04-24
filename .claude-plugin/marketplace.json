@@ -1,5 +1,6 @@
 {
   "name": "claude-search-conversations",
+  "description": "Marketplace for the search-conversations Claude Code skill",
   "owner": {
     "name": "Parth Lohomi",
     "email": "lohomi.parth.iitkgp@gmail.com"
@@ -9,17 +10,11 @@
       "name": "search-conversations",
       "description": "Search your past Claude Code conversations by keyword and jump back into any matched session with /resume.",
       "version": "1.0.0",
+      "source": "./",
       "author": {
         "name": "Parth Lohomi",
         "email": "lohomi.parth.iitkgp@gmail.com"
-      },
-      "source": {
-        "source": "git",
-        "url": "https://github.com/Lohomi15/claude-search-conversations",
-        "ref": "main"
-      },
-      "category": "productivity",
-      "homepage": "https://github.com/Lohomi15/claude-search-conversations"
+      }
     }
   ]
 }

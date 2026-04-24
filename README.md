@@ -17,10 +17,10 @@ Inside Claude Code, run these two commands in order:
 
 ```
 /plugin marketplace add Lohomi15/claude-search-conversations
-/plugin install search-conversations
+/plugin install search-conversations@claude-search-conversations
 ```
 
-The first command registers this repo as a plugin source; the second installs the skill.
+The first command registers this repo as a plugin source; the second installs the skill from it.
 
 ### Manual install
 
